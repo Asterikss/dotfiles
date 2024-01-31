@@ -148,21 +148,24 @@ fi
 export PATH=/usr/local/cuda-12.1/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64:$LD_LIBRARY_PATH
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lono/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/lono/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lono/anaconda3/etc/profile.d/conda.sh"
+# https://nielscautaerts.xyz/make-active-conda-environment-persist-in-neovim-terminal.html
+if [[ -z "${CONDA_SHLVL}" ]]; then
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/home/lono/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/home/lono/anaconda3/bin:$PATH"
+        if [ -f "/home/lono/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/lono/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/lono/anaconda3/bin:$PATH"
+        fi
     fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 fi
-unset __conda_setup
-# <<< conda initialize <<<
+
 
 . "$HOME/.cargo/env"
 
