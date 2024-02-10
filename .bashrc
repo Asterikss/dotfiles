@@ -112,6 +112,8 @@ alias jp='jupyter notebook'
 alias t='v -c term'
 alias st='git status'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias ca='conda activate'
+bind '"\C-H":shell-backward-kill-word'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
