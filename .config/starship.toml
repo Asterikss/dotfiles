@@ -12,5 +12,8 @@ disabled = false
 ignore_base = true
 format = '[$symbol$environment](dimmed green) '
 
+[aws]
+# disabled = true
+
 # https://starship.rs/presets/nerd-font.html
 # Hack font https://github.com/source-foundry/Hack
